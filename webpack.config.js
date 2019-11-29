@@ -8,20 +8,20 @@ module.exports = {
     hot: true,
     compress: true,
     host: 'localhost',
-    port: 3000
+    port: 3000,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: require('html-webpack-template'),
       inject: false,
       appMountId: 'app',
-      devServer: 'https://localhost:3000'
-    })
+      devServer: 'https://localhost:3000',
+    }),
   ],
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   module: {
-    rules: [{ test: /\.tsx?$/, loader: 'ts-loader' }]
-  }
+    rules: [{ test: /\.tsx?$/, loader: 'ts-loader' }],
+  },
 };

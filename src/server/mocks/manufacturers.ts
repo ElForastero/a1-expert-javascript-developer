@@ -1,5 +1,5 @@
 import nanoid from 'nanoid';
-import { IManufacturer } from '../types';
+import { Manufacturer as IManufacturer } from 'types/Manufacturer';
 
 export const manufacturers: Array<IManufacturer> = [
   {
@@ -45,8 +45,8 @@ export const manufacturers: Array<IManufacturer> = [
       'SQ7',
       'TT',
       'TT Roadster',
-      'V8'
-    ]
+      'V8',
+    ],
   },
   {
     name: 'BMW',
@@ -70,8 +70,8 @@ export const manufacturers: Array<IManufacturer> = [
       'Z4',
       'Z8',
       'i3',
-      'i8'
-    ]
+      'i8',
+    ],
   },
   {
     name: 'Chrysler',
@@ -93,12 +93,12 @@ export const manufacturers: Array<IManufacturer> = [
       'Stratus',
       'Viper',
       'Vision',
-      'Voyager'
-    ]
+      'Voyager',
+    ],
   },
   {
     name: 'Dodge',
-    models: ['Avenger', 'Caliber', 'Journey', 'Nitro']
+    models: ['Avenger', 'Caliber', 'Journey', 'Nitro'],
   },
   {
     name: 'Fiat',
@@ -146,8 +146,8 @@ export const manufacturers: Array<IManufacturer> = [
       'Tipo',
       'Ulysse',
       'Uno',
-      'X 1/9'
-    ]
+      'X 1/9',
+    ],
   },
   {
     name: 'Mercedes-Benz',
@@ -193,8 +193,8 @@ export const manufacturers: Array<IManufacturer> = [
       'Viano',
       'Vito',
       'Vito Tourer',
-      'X-Klasse'
-    ]
+      'X-Klasse',
+    ],
   },
   {
     name: 'Porsche',
@@ -212,8 +212,8 @@ export const manufacturers: Array<IManufacturer> = [
       'Cayman',
       'Macan',
       'Panamera',
-      'Panamera Sport Turismo'
-    ]
+      'Panamera Sport Turismo',
+    ],
   },
   {
     name: 'Skoda',
@@ -233,12 +233,12 @@ export const manufacturers: Array<IManufacturer> = [
       'Skoda 120',
       'Skoda 130',
       'Superb',
-      'Yeti'
-    ]
+      'Yeti',
+    ],
   },
   {
     name: 'Tesla',
-    models: ['Model S', 'Model X', 'Roadster']
+    models: ['Model S', 'Model X', 'Roadster'],
   },
   {
     name: 'Volkswagen',
@@ -284,14 +284,14 @@ export const manufacturers: Array<IManufacturer> = [
       'Tiguan Allspace',
       'Touareg',
       'Touran',
-      'Vento'
-    ]
-  }
+      'Vento',
+    ],
+  },
 ].map(manufacturer => ({
   ...manufacturer,
   uuid: nanoid(),
   models: manufacturer.models.map(name => ({
     uuid: nanoid(),
-    name
-  }))
+    name,
+  })),
 }));

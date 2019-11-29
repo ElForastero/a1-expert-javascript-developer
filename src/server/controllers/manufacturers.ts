@@ -1,4 +1,4 @@
-import { manufacturers } from '../mocks/manufacturers';
+import { manufacturers } from 'server/mocks/manufacturers';
 import { MockRequest, MockResponse } from 'xhr-mock';
 
 export function getManufacturers(req: MockRequest, res: MockResponse) {

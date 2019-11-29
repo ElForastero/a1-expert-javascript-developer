@@ -1,4 +1,5 @@
-import { cars, ICar } from '../mocks/cars';
+import { cars } from 'server/mocks/cars';
+import { Car as ICar } from 'types/Car';
 import { MockRequest, MockResponse } from 'xhr-mock';
 
 const ITEMS_PER_PAGE = 10;
@@ -51,11 +52,7 @@ export function getCars(req: MockRequest, res: MockResponse) {
   const manufacturer = query.get('manufacturer');
   const color = query.get('color');
 
-  filteredCars = filterByProperty(
-    'manufacturerName',
-    manufacturer,
-    filteredCars
-  );
+  filteredCars = filterByProperty('manufacturerName', manufacturer, filteredCars);
   filteredCars = filterByProperty('color', color, filteredCars);
 
   if (sort && ['asc', 'des'].includes(sort)) {
@@ -74,9 +71,9 @@ export function getCars(req: MockRequest, res: MockResponse) {
 
   return res.status(201).body(
     JSON.stringify({
-      cars: paginate(filteredCars, Number(page || 1)),
-      totalPageCount: Math.ceil(filteredCars.length / ITEMS_PER_PAGE),
-      totalCarsCount: filteredCars.length
+      data: paginate(filteredCars, Number(page || 1)),
+      pagesCount: Math.ceil(filteredCars.length / ITEMS_PER_PAGE),
+      totalCount: filteredCars.length,
     })
   );
 }

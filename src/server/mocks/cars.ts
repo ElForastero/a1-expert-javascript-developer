@@ -1,8 +1,8 @@
 import faker from 'faker';
 import { colors } from './colors';
 import { manufacturers } from './manufacturers';
-import { Car as ICar, FuelType } from 'types/Car';
-import { Manufacturer as IManufacturer } from 'types/Manufacturer';
+import { Car as ICar, FuelType } from '@/types/Car';
+import { Manufacturer as IManufacturer } from '@/types/Manufacturer';
 
 export const cars: Array<ICar> = [];
 

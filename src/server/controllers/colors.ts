@@ -1,4 +1,4 @@
-import { colors } from 'server/mocks/colors';
+import { colors } from '@/server/mocks/colors';
 import { MockRequest, MockResponse } from 'xhr-mock';
 
 export function getColors(req: MockRequest, res: MockResponse) {

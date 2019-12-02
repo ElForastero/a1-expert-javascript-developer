@@ -1,27 +1,25 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "rootDir": "src",
     "outDir": "build/dist",
     "module": "commonjs",
     "target": "es2018",
-    "lib": [
-      "es6",
-      "dom"
-    ],
+    "lib": ["es6", "dom"],
     "sourceMap": true,
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDir": "src",
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "esModuleInterop": true
   },
-  "include": [
-    "./src"
-  ],
+  "include": ["./src"],
   "exclude": [
     "node_modules",
     "build",
@@ -31,7 +29,5 @@
     "jest",
     "src/setupTests.ts"
   ],
-  "types": [
-    "typePatches"
-  ]
+  "types": ["typePatches"]
 }

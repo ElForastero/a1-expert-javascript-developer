@@ -1,0 +1,7 @@
+.link {
+  color: var(--neutral-2);
+}
+
+.link:hover {
+  color: var(--primary-2);
+}

@@ -1,5 +1,5 @@
-import { cars } from 'server/mocks/cars';
-import { Car as ICar } from 'types/Car';
+import { cars } from '@/server/mocks/cars';
+import { Car as ICar } from '@/types/Car';
 import { MockRequest, MockResponse } from 'xhr-mock';
 
 const ITEMS_PER_PAGE = 10;

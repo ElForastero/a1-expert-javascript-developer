@@ -1,7 +1,14 @@
 import React from 'react';
+import c from 'classnames';
+import s from './Button.module.css';
 
 type Props = {
-  children: React.ElementType;
+  variant?: 'primary';
+  size?: 'md';
 };
 
-export const Button: React.FC<Props> = ({ children }) => <button>{children}</button>;
+const Button: React.FC<Props> = ({ children, variant = 'primary', size = 'md' }) => (
+  <button className={c(s.button, s[variant], s[size])}>{children}</button>
+);
+
+export default Button;

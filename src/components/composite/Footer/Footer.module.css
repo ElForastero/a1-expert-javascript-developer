@@ -1,0 +1,5 @@
+.container {
+  height: 80px;
+  border-top: 2px solid var(--neutral-1);
+  font-size: var(--fs-caption);
+}

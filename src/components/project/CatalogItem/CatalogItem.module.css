@@ -1,0 +1,22 @@
+.container {
+  border: 2px solid var(--neutral-1);
+  padding: var(--space-2);
+}
+
+.title,
+.info {
+  margin-bottom: var(--space-1);
+}
+
+.title {
+  font-size: var(--fs-title);
+  font-weight: 500;
+}
+
+.info {
+  font-size: var(--fs-caption);
+}
+
+.action {
+  font-size: var(--fs-caption);
+}

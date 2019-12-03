@@ -1,0 +1,23 @@
+.button {
+  font-size: var(--fs-body);
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radii-1);
+}
+
+/* Variants */
+.primary {
+  background-color: var(--primary-1);
+  color: #fff;
+}
+
+.primary:active {
+  background-color: var(--primary-2);
+}
+
+/* Sizes */
+.md {
+  height: 32px;
+  padding-left: var(--space-3);
+  padding-right: var(--space-3);
+}

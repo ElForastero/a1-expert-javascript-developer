@@ -1,7 +1,9 @@
 .link {
-  color: var(--neutral-2);
+  color: var(--primary-1);
+  text-decoration: none;
 }
 
 .link:hover {
   color: var(--primary-2);
+  border-bottom: 1px solid currentColor;
 }

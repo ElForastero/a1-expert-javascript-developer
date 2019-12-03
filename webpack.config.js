@@ -2,8 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const cssModulesRegex = /\.module\.css$/;
+const cssRegex = /\.css$/;
+
 module.exports = {
-  entry: './src/index.tsx',
+  entry: './src/App.tsx',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     hot: true,
@@ -35,7 +38,7 @@ module.exports = {
     rules: [
       { test: /\.tsx?$/, loader: 'ts-loader' },
       {
-        test: /\.css$/,
+        test: cssModulesRegex,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -47,6 +50,25 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
+              localsConvention: 'camelCaseOnly',
+            },
+          },
+          'postcss-loader',
+        ],
+      },
+      {
+        test: cssRegex,
+        exclude: cssModulesRegex,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          {
+            loader: 'css-loader',
+            options: {
               localsConvention: 'camelCaseOnly',
             },
           },

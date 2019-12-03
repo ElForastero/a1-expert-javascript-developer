@@ -1,12 +1,17 @@
 import React from 'react';
-import { content } from './Content.module.css';
+import c from 'classnames';
+import { content, withTopPadding } from './Content.module.css';
 
 type Props = {
-  children: React.ReactNode;
+  withTopPadding?: boolean;
 };
 
-const Content: React.FC<Props> = ({ children }) => (
-  <section className={content}>{children}</section>
+const Content: React.FC<Props> = ({ children, withTopPadding: p }) => (
+  <div className={c(content, { [withTopPadding]: p })}>{children}</div>
 );
+
+Content.defaultProps = {
+  withTopPadding: false,
+};
 
 export default Content;

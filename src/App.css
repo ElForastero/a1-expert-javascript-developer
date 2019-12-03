@@ -1,8 +1,21 @@
 @import 'assets/styles/palette.css';
 @import 'assets/styles/font-sizes.css';
 @import 'assets/styles/spaces.css';
+@import 'assets/styles/radii.css';
 @import '~normalize.css/normalize.css';
 
-body {
+* {
+  box-sizing: border-box;
+}
 
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--fs-body);
+  color: var(--neutral-2);
 }

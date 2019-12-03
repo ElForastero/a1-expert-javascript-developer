@@ -1,0 +1,17 @@
+.tombstone {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  background-size: 400%;
+  background: linear-gradient(-90deg, var(--neutral-1) 0%, #fff 50%, var(--neutral-1) 100%);
+  animation: pulse 1.3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -135% 0;
+  }
+}

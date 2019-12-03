@@ -13,5 +13,5 @@ export interface Car {
   color: string;
   mileage: Mileage;
   fuelType: FuelType;
-  pictureUrl: string;
+  pictureUrl?: string;
 }

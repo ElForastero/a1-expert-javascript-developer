@@ -2,9 +2,10 @@
   display: inline-block;
   height: 100%;
   width: 100%;
-  background-size: 400%;
   background: linear-gradient(-90deg, var(--neutral-1) 0%, #fff 50%, var(--neutral-1) 100%);
-  animation: pulse 1.3s ease-in-out infinite;
+  background-size: 400% 400%;
+  animation: pulse 1.2s ease-in-out infinite;
+  border-radius: 2px;
 }
 
 @keyframes pulse {
@@ -14,4 +15,17 @@
   to {
     background-position: -135% 0;
   }
+}
+
+.line {
+  width: 5.5em;
+  height: 1em;
+}
+
+.line::before {
+  content: '\00a0';
+}
+
+.line.block {
+  width: 100%;
 }

@@ -1,3 +1,5 @@
-import H1 from './H1';
+import Header from './Header';
+import Title from './Title';
+import Paragraph from './Paragraph';
 
-export { H1 };
+export { Header, Title, Paragraph };

@@ -1,15 +1,18 @@
-import * as React from 'react';
+import React from 'react';
 import { render } from 'react-dom';
-import Catalog from '@/pages/Catalog';
-import Error404 from '@/pages/Error404';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { ScrollToTop } from '@/components/base/ScrollToTop';
+import routes from '@/config/routes';
 import './App.css';
 
 const App = () => (
   <Router>
+    <ScrollToTop />
     <Switch>
-      <Route path="/" component={Catalog} exact />
-      <Route component={Error404} />
+      {routes.map(({ name, ...route }) => (
+        // @ts-ignore
+        <Route key={name} {...route} />
+      ))}
     </Switch>
   </Router>
 );

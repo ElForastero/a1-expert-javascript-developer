@@ -5,19 +5,20 @@ import { Content } from '@/components/base/Layout';
 import Box from '@/components/base/Box';
 import Nav from '@/components/composite/Nav';
 import { NavLink } from '@/components/base/Link';
+import route from '@/libs/route';
 import { header } from './Header.module.css';
 
 const Header = () => (
   <Box display="flex" as="header" alignItems="center" className={header}>
     <Content>
       <Box height="100%" display="flex" justifyContent="space-between" alignItems="center">
-        <Link to="/">
+        <Link to={route('catalog')}>
           <Logo />
         </Link>
         <Nav>
-          <NavLink to="/catalog">Purchase</NavLink>
-          <NavLink to="/my-orders">My Orders</NavLink>
-          <NavLink to="/sell">Sell</NavLink>
+          <NavLink to={route('catalog')}>Purchase</NavLink>
+          <NavLink to={route('catalog')}>My Orders</NavLink>
+          <NavLink to={route('catalog')}>Sell</NavLink>
         </Nav>
       </Box>
     </Content>

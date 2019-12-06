@@ -1,0 +1,7 @@
+.container {
+  font-size: var(--fs-caption);
+}
+
+.container > *:not(:last-child) {
+  margin-right: var(--space-3);
+}

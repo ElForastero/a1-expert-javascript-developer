@@ -3,6 +3,7 @@
   cursor: pointer;
   border: none;
   border-radius: var(--radii-1);
+  min-width: 128px;
 }
 
 /* Variants */

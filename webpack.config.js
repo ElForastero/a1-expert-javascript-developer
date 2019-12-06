@@ -7,6 +7,9 @@ const cssRegex = /\.css$/;
 
 module.exports = {
   entry: './src/App.tsx',
+  output: {
+    publicPath: '/',
+  },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     hot: true,

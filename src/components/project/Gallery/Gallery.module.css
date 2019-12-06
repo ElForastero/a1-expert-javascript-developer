@@ -1,0 +1,5 @@
+.gallery {
+  height: 333px;
+  max-height: 100vh;
+  background-color: var(--neutral-1);
+}

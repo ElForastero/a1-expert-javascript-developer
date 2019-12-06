@@ -6,7 +6,7 @@ import Footer from '@/components/composite/Footer';
 const Common: React.FC = ({ children }) => (
   <Layout>
     <Header />
-    <Content withTopPadding>{children}</Content>
+    {children}
     <Footer />
   </Layout>
 );

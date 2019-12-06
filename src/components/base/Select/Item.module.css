@@ -1,0 +1,17 @@
+.item {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  cursor: pointer;
+}
+
+.item:not(.selected):hover {
+  background-color: var(--neutral-1);
+}
+
+.selected {
+  background-color: var(--primary-1);
+  color: #fff;
+}

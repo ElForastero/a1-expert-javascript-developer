@@ -3,6 +3,7 @@
   height: 100%;
   padding-left: var(--space-3);
   padding-right: var(--space-3);
+  flex-grow: 1;
 }
 
 .with-top-padding {

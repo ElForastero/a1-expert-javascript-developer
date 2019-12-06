@@ -1,0 +1,18 @@
+.header {
+  font-size: var(--fs-heading);
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  font-size: var(--fs-title);
+  margin-bottom: var(--space-3);
+}
+
+.paragraph {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+}
+
+.bold {
+  font-weight: 500;
+}

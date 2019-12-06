@@ -1,6 +1,7 @@
 .link {
   color: var(--primary-1);
   text-decoration: none;
+  border-bottom: 1px solid transparent;
 }
 
 .link:hover {

@@ -33,7 +33,7 @@ const { actions, reducer } = slice;
 export const { updateData, updateLoading, updateError } = actions;
 export default reducer;
 
-type FetchCarsParams = {
+export type FetchCarsParams = {
   page: number;
   sort: 'asc' | 'desc' | null;
   manufacturer: 'string' | null;

@@ -3,7 +3,7 @@ import { container } from './Footer.module.css';
 import Box from '@/components/base/Box';
 import Copyright from '@/components/base/Copyright';
 
-const Footer = () => (
+const Footer: React.FC = () => (
   <Box
     as="footer"
     display="flex"

@@ -4,7 +4,11 @@
   border-bottom: 1px solid transparent;
 }
 
-.link:hover {
+.link.disabled {
+  color: var(--neutral-2);
+}
+
+.link:not(.disabled):hover {
   color: var(--primary-2);
   border-bottom: 1px solid currentColor;
 }

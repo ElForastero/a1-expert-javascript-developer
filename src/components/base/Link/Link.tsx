@@ -1,19 +1,26 @@
 import React from 'react';
+import c from 'classnames';
 import { LinkProps, Link as BaseLink } from 'react-router-dom';
-import { link } from './Link.module.css';
+import { link, disabled } from './Link.module.css';
 
 type Props = LinkProps & {
-  invertColors?: boolean;
+  disabled?: boolean;
 };
 
-const Link: React.FC<Props> = ({ children, invertColors, ...props }) => (
-  <BaseLink className={link} {...props}>
-    {children}
-  </BaseLink>
-);
+const Link: React.FC<Props> = ({ children, disabled: isDisabled, ...props }) => {
+  if (isDisabled) {
+    return <span className={c(link, disabled)}>{children}</span>;
+  }
+
+  return (
+    <BaseLink className={link} {...props}>
+      {children}
+    </BaseLink>
+  );
+};
 
 Link.defaultProps = {
-  invertColors: false,
+  disabled: false,
 };
 
 export default Link;

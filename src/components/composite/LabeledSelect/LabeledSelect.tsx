@@ -4,7 +4,7 @@ import Label from '@/components/base/Label';
 import { Select, Props as SelectProps } from '@/components/base/Select';
 import useRandomID from '@/hooks/useRandomID';
 
-type Props = SelectProps & {
+export type Props = SelectProps & {
   label: string;
 };
 

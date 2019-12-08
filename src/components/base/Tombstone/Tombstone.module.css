@@ -18,12 +18,8 @@
 }
 
 .line {
-  width: 5.5em;
+  width: 10em;
   height: 1em;
-}
-
-.line::before {
-  content: '\00a0';
 }
 
 .line.block {

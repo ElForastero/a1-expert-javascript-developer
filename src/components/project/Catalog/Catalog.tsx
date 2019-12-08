@@ -1,89 +1,64 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import CatalogItem, { CatalogItemTombstone } from '@/components/project/CatalogItem/CatalogItem';
 import Box from '@/components/base/Box';
-import { LabeledSelect } from '@/components/composite/LabeledSelect';
 import { Title } from '@/components/base/Typography';
 import { Pagination } from '@/components/composite/Pagination';
+import { MileageSortingSelect } from '@/components/project/MileageSortingSelect';
 import { list, container } from './Catalog.module.css';
 
-const values = [
-  { label: 'None', value: null },
-  { label: 'Mileage - Ascending', value: 'ASC' },
-  { label: 'Mileage - Descending', value: 'DESC' },
-];
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { fetchCars } from '@/store/cars';
+import { times } from 'ramda';
+import Tombstone from '@/components/base/Tombstone';
+
+const itemsPerPage = 10;
 
 const Catalog: React.FC = () => {
+  const { totalCount, loading } = useSelector((state: RootState) => state.cars);
+
+  let showing = 0;
+  if (totalCount) {
+    showing = totalCount > itemsPerPage ? itemsPerPage : totalCount;
+  }
+
   return (
     <div className={container}>
-      <Box display="flex" mb={3} justifyContent="space-between">
+      <Box display="flex" justifyContent="space-between">
         <Box width="100%">
           <Title bold>Available cars</Title>
           <Box mb={2} />
-          <Title>Showing 10 of 100 results</Title>
+          <Title>
+            {!loading && Number(totalCount) > 0 && `Showing ${showing} of ${totalCount} results`}
+            {loading && <Tombstone line />}
+          </Title>
         </Box>
         <Box width="250px">
-          <LabeledSelect label="Sort by" values={values} onChange={console.log} />
+          <MileageSortingSelect />
         </Box>
       </Box>
-      <div className={list}>
-        <CatalogItem
-          color={'red'}
-          fuelType={'Diesel'}
-          manufacturerName={'Audi'}
-          mileage={{ number: 133000.7, unit: 'km' }}
-          modelName={'A3'}
-          pictureUrl={undefined}
-          stockNumber={353535}
-        />
-        <CatalogItem
-          color={'red'}
-          fuelType={'Diesel'}
-          manufacturerName={'Audi'}
-          mileage={{ number: 133000.7, unit: 'km' }}
-          modelName={'A3'}
-          pictureUrl={undefined}
-          stockNumber={353535}
-        />
-        <CatalogItem
-          color={'red'}
-          fuelType={'Diesel'}
-          manufacturerName={'Audi'}
-          mileage={{ number: 133000.7, unit: 'km' }}
-          modelName={'A3'}
-          pictureUrl={undefined}
-          stockNumber={353535}
-        />
-        <CatalogItem
-          color={'red'}
-          fuelType={'Diesel'}
-          manufacturerName={'Audi'}
-          mileage={{ number: 133000.7, unit: 'km' }}
-          modelName={'A3'}
-          pictureUrl={undefined}
-          stockNumber={353535}
-        />
-        <CatalogItem
-          color={'red'}
-          fuelType={'Diesel'}
-          manufacturerName={'Audi'}
-          mileage={{ number: 133000.7, unit: 'km' }}
-          modelName={'A3'}
-          pictureUrl={undefined}
-          stockNumber={353535}
-        />
-        <CatalogItem
-          color={'red'}
-          fuelType={'Diesel'}
-          manufacturerName={'Audi'}
-          mileage={{ number: 133000.7, unit: 'km' }}
-          modelName={'A3'}
-          pictureUrl={undefined}
-          stockNumber={353535}
-        />
-      </div>
-      <Box mt={3}>
-        <Pagination />
-      </Box>
+      <Pagination entity="cars" fetch={fetchCars} route="catalog">
+        {({ renderPagination, data, loading }) => (
+          <Fragment>
+            <div className={list}>
+              {loading && times(n => <CatalogItemTombstone key={n} />, 10)}
+              {!loading &&
+                data.map(({ stockNumber, ...data }) => (
+                  <CatalogItem key={stockNumber} stockNumber={stockNumber} {...data} />
+                ))}
+            </div>
+            {!loading && data.length > 0 && <Box mt={3}>{renderPagination()}</Box>}
+            {!loading && data.length === 0 && (
+              <Box mt={3}>
+                <Title>
+                  It looks like we don't have any cars <br />
+                  matching your search criteria :(
+                </Title>
+              </Box>
+            )}
+          </Fragment>
+        )}
+      </Pagination>
     </div>
   );
 };

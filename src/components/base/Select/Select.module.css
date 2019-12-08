@@ -1,9 +1,11 @@
 .container {
+  --item-height: 32px;
+
   height: 32px;
   display: flex;
   align-items: center;
   padding-left: var(--space-2);
-  padding-right: var(--space-3);
+  padding-right: var(--space-2);
   border: 1px solid var(--neutral-1);
   border-radius: var(--radii-1);
   font-size: var(--fs-body);
@@ -13,8 +15,14 @@
   cursor: pointer;
 }
 
-.container::after {
-  content: '';
+.selected {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.triangle {
   width: 0;
   height: 0;
   position: absolute;
@@ -26,7 +34,7 @@
   border-color: var(--neutral-1) transparent transparent transparent;
 }
 
-.container.active::after {
+.active .triangle {
   transform: translateY(-50%) rotate(180deg);
 }
 
@@ -39,4 +47,6 @@
   border-radius: var(--radii-1);
   background-color: #fff;
   z-index: var(--layer-1);
+  max-height: calc(var(--item-height) * 5.5);
+  overflow: auto;
 }

@@ -6,6 +6,7 @@
 
 .title,
 .info {
+  display: inline-flex;
   margin-bottom: var(--space-1);
 }
 
@@ -19,5 +20,6 @@
 }
 
 .action {
+  display: inline-flex;
   font-size: var(--fs-caption);
 }

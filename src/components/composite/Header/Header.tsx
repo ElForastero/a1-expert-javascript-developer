@@ -17,8 +17,8 @@ const Header = () => (
         </Link>
         <Nav>
           <NavLink to={route('catalog')}>Purchase</NavLink>
-          <NavLink to={route('catalog')}>My Orders</NavLink>
-          <NavLink to={route('catalog')}>Sell</NavLink>
+          <NavLink to={route('my-orders')}>My Orders</NavLink>
+          <NavLink to={route('sell')}>Sell</NavLink>
         </Nav>
       </Box>
     </Content>

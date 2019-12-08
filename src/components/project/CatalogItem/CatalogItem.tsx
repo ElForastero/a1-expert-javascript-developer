@@ -1,10 +1,11 @@
 import React from 'react';
-import Cover from './Components/Cover';
+import route from '@/libs/route';
+import { ucFirst } from '@/libs/str';
+import { Car } from '@/types/Car';
 import Box from '@/components/base/Box';
 import { Link } from '@/components/base/Link';
-import { Car } from '@/types/Car';
 import Tombstone from '@/components/base/Tombstone';
-import route from '@/libs/route';
+import Cover from './Components/Cover';
 import s from './CatalogItem.module.css';
 
 const CatalogItem: React.FC<Car> = ({
@@ -20,11 +21,11 @@ const CatalogItem: React.FC<Car> = ({
     <Cover src={pictureUrl} />
     <Box display="flex" flexDirection="column">
       <div className={s.title}>{`${manufacturerName} ${modelName}`}</div>
-      <div
-        className={s.info}
-      >{`Stock # ${stockNumber} - ${mileage.number} ${mileage.unit} - ${fuelType} - ${color}`}</div>
+      <div className={s.info}>{`Stock # ${stockNumber} - ${mileage.number} ${
+        mileage.unit
+      } - ${fuelType} - ${ucFirst(color)}`}</div>
       <div className={s.action}>
-        <Link to={route('car', { identifier: stockNumber })}>View details</Link>
+        <Link to={route('car', { id: stockNumber })}>View details</Link>
       </div>
     </Box>
   </Box>
@@ -32,7 +33,7 @@ const CatalogItem: React.FC<Car> = ({
 
 const CatalogItemTombstone: React.FC = () => (
   <Box as="article" display="flex" className={s.container}>
-    <Box mr={3}>
+    <Box display="inline-flex" mr={3}>
       <Tombstone width="86px" height="67px" />
     </Box>
     <Box flexGrow={1} display="flex" flexDirection="column">

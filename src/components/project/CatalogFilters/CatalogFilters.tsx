@@ -1,25 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import useSearchParams from '@/hooks/useSearchParams';
+import route from '@/libs/route';
 import Button from '@/components/base/Button';
-import { LabeledSelect } from '@/components/composite/LabeledSelect';
 import Box from '@/components/base/Box';
 import { Backplate } from '@/components/base/Backplate';
-import { container } from './CatalogFilters.module.css';
-
-const values = [
-  { label: 'None', value: null },
-  { label: 'Mileage - Ascending', value: 'ASC' },
-  { label: 'Mileage - Descending', value: 'DESC' },
-];
+import { ManufacturersSelect } from '@/components/project/ManufacturersSelect';
+import { ColorsSelect } from '@/components/project/ColorsSelect';
 
 const CatalogFilters: React.FC = () => {
+  const history = useHistory();
+  const searchParams = useSearchParams();
+  const [color, setColor] = useState(undefined);
+  const [manufacturer, setManufacturer] = useState(undefined);
+
+  const applyFilters = () => {
+    // Reset pagination by setting the page to 1
+    history.replace(route('catalog', { page: 1 }, { ...searchParams, manufacturer, color }));
+  };
+
   return (
     <Box minWidth="300px" mr={3}>
       <Backplate>
-        <LabeledSelect label="Color" values={values} onChange={console.log} />
+        <ColorsSelect onChange={setColor} />
         <Box mb={1} />
-        <LabeledSelect label="Manufacturer" values={values} onChange={console.log} />
+        <ManufacturersSelect onChange={setManufacturer} />
         <Box display="flex" justifyContent="flex-end" mt={3}>
-          <Button>Filter</Button>
+          <Button onClick={applyFilters}>Filter</Button>
         </Box>
       </Backplate>
     </Box>

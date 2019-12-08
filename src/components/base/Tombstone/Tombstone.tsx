@@ -9,10 +9,14 @@ type Props = {
   height?: string;
 };
 
-const Tombstone: React.FC<Props> = ({ children, line = false, ...styles }) => (
-  <div className={c(s.tombstone, { [s.line]: line })} style={styles}>
-    {children}
-  </div>
-);
+const Tombstone: React.FC<Props> = ({ children, line = false, ...styles }) => {
+  const Tag = line ? 'span' : 'div';
+
+  return (
+    <Tag className={c(s.tombstone, { [s.line]: line })} style={styles}>
+      {children}
+    </Tag>
+  );
+};
 
 export default Tombstone;

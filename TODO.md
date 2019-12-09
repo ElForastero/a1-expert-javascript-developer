@@ -1,3 +1,0 @@
-- I have temporarily disabled `strictNullChecks` until this [issue](https://github.com/reduxjs/redux-toolkit/issues/275) will be solved.
-- I left some `@todo`s is the places where I had no time to fix TypeScript type inference or where should be performed a code refactoring.
-- A few tests vere skipped because of refactoring needed to properly mock the store.

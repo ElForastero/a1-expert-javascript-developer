@@ -7,7 +7,7 @@ type Props = LinkProps & {
   disabled?: boolean;
 };
 
-const Link: React.FC<Props> = ({ children, disabled: isDisabled, ...props }) => {
+export const Link: React.FC<Props> = ({ children, disabled: isDisabled, ...props }) => {
   if (isDisabled) {
     return <span className={c(link, disabled)}>{children}</span>;
   }
@@ -22,5 +22,3 @@ const Link: React.FC<Props> = ({ children, disabled: isDisabled, ...props }) => 
 Link.defaultProps = {
   disabled: false,
 };
-
-export default Link;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Footer from '@/components/composite/Footer';
+import { Footer } from '@/components/composite/Footer';
 
 afterEach(cleanup);
 

@@ -6,8 +6,6 @@ type Props = {
   bold?: boolean;
 };
 
-const Title: React.FC<Props> = ({ children, bold: isBold = false }) => (
+export const Title: React.FC<Props> = ({ children, bold: isBold = false }) => (
   <div className={c(title, { [bold]: isBold })}>{children}</div>
 );
-
-export default Title;

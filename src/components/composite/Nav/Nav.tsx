@@ -5,6 +5,8 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Nav: React.FC<Props> = ({ children }) => <nav className={container}>{children}</nav>;
-
-export default Nav;
+export const Nav: React.FC<Props> = ({ children }) => (
+  <nav className={container} data-testid="navigation">
+    {children}
+  </nav>
+);

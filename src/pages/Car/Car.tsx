@@ -1,24 +1,34 @@
 import React, { useEffect } from 'react';
 import CommonLayout from '@/layouts/Common';
 import { Content } from '@/components/base/Layout';
-import Box from '@/components/base/Box';
+import { Box } from '@/components/base/Box';
 import { Gallery } from '@/components/project/Gallery';
-import { Header, Title, Paragraph } from '@/components/base/Typography';
+import { Heading, Title, Paragraph } from '@/components/base/Typography';
 import { FavoritesControl } from '@/components/project/FavoritesControl';
-
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCar } from '@/store/car';
+import { fetchCar, updateError, updateLoading } from '@/store/car';
 import { RootState } from '@/store';
 import { ucFirst } from '@/libs/str';
-import Tombstone from '@/components/base/Tombstone';
+import { Placeholder } from '@/components/base/Placeholder';
+import { NotFoundException } from '@/exceptions/NotFoundException';
 
 const Car: React.FC = () => {
   const dispatch = useDispatch();
-  const { data, loading } = useSelector((state: RootState) => state.car);
+  const { data, loading, error } = useSelector((state: RootState) => state.car);
   const { id } = useParams();
 
+  /*
+   * @todo Since we can't throw an exception from an async function
+   *   would be better to hide this logic somewhere. Maybe in redux middleware.
+   */
+  if (error === 404) {
+    dispatch(updateError(null));
+    throw new NotFoundException();
+  }
+
   useEffect(() => {
+    /* @todo extend useParams to automatically cast types */
     dispatch(fetchCar(parseInt(id!, 10)));
   }, [id]);
 
@@ -36,12 +46,12 @@ const Car: React.FC = () => {
           mx="auto"
         >
           <Box mr={3}>
-            <Header bold>
-              {loading && <Tombstone line />}
+            <Heading bold>
+              {loading && <Placeholder line />}
               {!loading && `${data!.manufacturerName} ${data!.modelName}`}
-            </Header>
+            </Heading>
             <Title>
-              {loading && <Tombstone line />}
+              {loading && <Placeholder line />}
               {!loading &&
                 `Stock # ${data!.stockNumber} - ${data!.mileage.number} ${data!.mileage.unit} - ${
                   data!.fuelType
@@ -53,9 +63,7 @@ const Car: React.FC = () => {
               change due to bad weather conditions.
             </Paragraph>
           </Box>
-          <Box minWidth="300px">
-            <FavoritesControl />
-          </Box>
+          <Box minWidth="300px">{!loading && <FavoritesControl id={data!.stockNumber} />}</Box>
         </Box>
       </Content>
     </CommonLayout>

@@ -8,7 +8,7 @@ type Props = {
   onClick?: MouseEventHandler;
 };
 
-const Button: React.FC<Props> = ({
+export const Button: React.FC<Props> = ({
   children,
   variant = 'primary',
   size = 'md',
@@ -18,5 +18,3 @@ const Button: React.FC<Props> = ({
     {children}
   </button>
 );
-
-export default Button;

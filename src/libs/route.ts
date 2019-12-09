@@ -17,6 +17,7 @@ export default (name: string, params?: RouterParams, searchParams?: SearchParams
   const route = config.find(({ name: routeName }) => name === routeName);
 
   if (!route || !route.path) {
+    return '/';
     throw new Error(`Route "${name}" doesn't exist`);
   }
 

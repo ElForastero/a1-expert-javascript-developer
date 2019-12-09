@@ -1,3 +1,9 @@
+.header,
+.title,
+.paragraph {
+  display: inline-flex;
+}
+
 .header {
   font-size: var(--fs-heading);
   margin-bottom: var(--space-3);

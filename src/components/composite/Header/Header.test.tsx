@@ -1,13 +1,13 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render, cleanup } from '@testing-library/react';
+import { Header } from '@/components/composite/Header';
 import '@testing-library/jest-dom/extend-expect';
-import Header from '@/components/composite/Header';
 
 afterEach(cleanup);
 
 // ETA: 1 Hour
-describe('<Header />', () => {
+describe('<Heading />', () => {
   it('should render <Logo />', () => {
     const { getByRole } = render(<Header />, { wrapper: MemoryRouter });
     expect(getByRole('img')).toBeDefined();

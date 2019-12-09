@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import { RootState } from '@/store';
+import { SelectItem as ItemType } from '@/components/base/Select';
 import { LabeledSelect } from '@/components/composite/LabeledSelect';
 import { fetchManufacturers } from '@/store/manufacturers';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,7 +15,7 @@ export const ManufacturersSelect: React.FC<Props> = ({ onChange }) => {
   const manufacturers = useSelector((state: RootState) => state.manufacturers.data);
   const { manufacturer } = useSearchParams();
 
-  const noneValue = { label: 'All manufacturers', value: undefined };
+  const noneValue: ItemType = { label: 'All manufacturers', value: undefined };
   const manufacturersValues = useMemo(
     () => [noneValue, ...manufacturers.map(({ name }) => ({ label: name, value: name }))],
     [manufacturers]

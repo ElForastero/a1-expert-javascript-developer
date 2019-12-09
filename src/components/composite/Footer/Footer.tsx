@@ -1,9 +1,9 @@
 import React from 'react';
 import { container } from './Footer.module.css';
-import Box from '@/components/base/Box';
-import Copyright from '@/components/base/Copyright';
+import { Box } from '@/components/base/Box';
+import { Copyright } from '@/components/base/Copyright';
 
-const Footer: React.FC = () => (
+export const Footer: React.FC = () => (
   <Box
     as="footer"
     display="flex"
@@ -12,8 +12,6 @@ const Footer: React.FC = () => (
     className={container}
     mt={3}
   >
-    <Copyright />
+    <Copyright data-testid="footer" />
   </Box>
 );
-
-export default Footer;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import route from '@/libs/route';
 import useSearchParams from '@/hooks/useSearchParams';
+import route from '@/libs/route';
 import { LabeledSelect } from '@/components/composite/LabeledSelect';
 
 export const MileageSortingSelect: React.FC = () => {

@@ -3,34 +3,42 @@ import { Provider } from 'react-redux';
 import store, { AppThunk } from '@/store';
 import { MemoryRouter, Route } from 'react-router-dom';
 import { Pagination } from '@/components/composite/Pagination/Pagination';
-import { updateLoading, updateData, FetchCarsParams } from '@/store/cars';
+import { updateLoading, updateData } from '@/store/cars';
 import { render, cleanup } from '@testing-library/react';
+import { Car } from '@/types/Car';
 import '@testing-library/jest-dom/extend-expect';
 
-const data = Array.from(Array(10 * 10).keys());
-const fetchCars = (params: FetchCarsParams): AppThunk => async dispatch => {
+const data: Car[] = Array.from(Array(10 * 10).keys()).map(i => ({
+  stockNumber: i,
+  manufacturerName: 'audi',
+  modelName: 'a6',
+  color: 'red',
+  mileage: { number: 1, unit: 'km' },
+  fuelType: 'Diesel',
+  pictureUrl: '/image.svg',
+}));
+
+const fetchCars = (): AppThunk => async dispatch => {
   await dispatch(
-    // @ts-ignore
     updateData({
       data,
       totalCount: 100,
       pagesCount: 10,
+      loading: false,
+      error: null,
     })
   );
-  // @ts-ignore
   await dispatch(updateLoading(false));
 };
 
 const App = () => (
   <Pagination entity="cars" fetch={fetchCars} route="catalog">
-    {({ renderPagination, data, loading }) => renderPagination()}
+    {({ renderPagination }) => renderPagination()}
   </Pagination>
 );
 
-// @ts-ignore
-function renderApp(ui, { route } = { route: '/1' }) {
-  // @ts-ignore
-  const Wrapper = ({ children }) => (
+const renderApp = (ui: React.ReactElement, { route } = { route: '/1' }) => {
+  const Wrapper: React.FC = ({ children }) => (
     <Provider store={store}>
       <MemoryRouter initialEntries={[route]}>
         <Route path="/:page">{children}</Route>
@@ -38,7 +46,7 @@ function renderApp(ui, { route } = { route: '/1' }) {
     </Provider>
   );
   return render(ui, { wrapper: Wrapper });
-}
+};
 
 afterEach(cleanup);
 

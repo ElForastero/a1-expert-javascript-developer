@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '@/components/base/Logo';
+import { Logo } from '@/components/base/Logo';
 import { Content } from '@/components/base/Layout';
-import Box from '@/components/base/Box';
-import Nav from '@/components/composite/Nav';
+import { Box } from '@/components/base/Box';
+import { Nav } from '@/components/composite/Nav';
 import { NavLink } from '@/components/base/Link';
 import route from '@/libs/route';
 import { header } from './Header.module.css';
 
-const Header = () => (
+export const Header = () => (
   <Box display="flex" as="header" alignItems="center" className={header}>
-    <Content>
+    <Content data-testid="header">
       <Box height="100%" display="flex" justifyContent="space-between" alignItems="center">
         <Link to={route('catalog')}>
           <Logo />
@@ -24,5 +24,3 @@ const Header = () => (
     </Content>
   </Box>
 );
-
-export default Header;

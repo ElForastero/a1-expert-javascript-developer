@@ -1,6 +1,6 @@
 import React from 'react';
-import Box from '@/components/base/Box';
-import Label from '@/components/base/Label';
+import { Box } from '@/components/base/Box';
+import { Label } from '@/components/base/Label';
 import { Select, Props as SelectProps } from '@/components/base/Select';
 import useRandomID from '@/hooks/useRandomID';
 

@@ -8,9 +8,9 @@ type State = {
   loading: boolean;
 };
 
-const slice = createSlice<State, any>({
+const slice = createSlice({
   name: 'colors',
-  initialState: { data: [], error: null, loading: false },
+  initialState: { data: [], error: null, loading: true } as State,
   reducers: {
     updateData(state: State, action: PayloadAction<Array<string>>) {
       state.data = action.payload;
@@ -29,20 +29,15 @@ export const { updateData, updateLoading, updateError } = actions;
 export default reducer;
 
 export const fetchColors = (): AppThunk => async dispatch => {
-  // @ts-ignore
   dispatch(updateLoading(true));
-  // @ts-ignore
   dispatch(updateError(null));
 
   try {
     const result = await axios.get('/api/colors');
-    // @ts-ignore
     dispatch(updateData(result.data.colors));
   } catch (error) {
-    // @ts-ignore
     dispatch(updateError(error.message));
   } finally {
-    // @ts-ignore
     dispatch(updateLoading(false));
   }
 };

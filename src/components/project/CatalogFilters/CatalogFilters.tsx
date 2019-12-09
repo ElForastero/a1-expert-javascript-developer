@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import useSearchParams from '@/hooks/useSearchParams';
 import route from '@/libs/route';
-import Button from '@/components/base/Button';
-import Box from '@/components/base/Box';
+import { Button } from '@/components/base/Button';
+import { Box } from '@/components/base/Box';
 import { Backplate } from '@/components/base/Backplate';
 import { ManufacturersSelect } from '@/components/project/ManufacturersSelect';
 import { ColorsSelect } from '@/components/project/ColorsSelect';
 
-const CatalogFilters: React.FC = () => {
+export const CatalogFilters: React.FC = () => {
   const history = useHistory();
   const searchParams = useSearchParams();
   const [color, setColor] = useState(undefined);
@@ -20,7 +20,7 @@ const CatalogFilters: React.FC = () => {
   };
 
   return (
-    <Box minWidth="300px" mr={3}>
+    <Box minWidth="300px" mr={3} dataTestId="catalog-filters">
       <Backplate>
         <ColorsSelect onChange={setColor} />
         <Box mb={1} />
@@ -32,5 +32,3 @@ const CatalogFilters: React.FC = () => {
     </Box>
   );
 };
-
-export default CatalogFilters;

@@ -1,17 +1,17 @@
 import React, { useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useSearchParams from '@/hooks/useSearchParams';
-import { AppThunk, PaginatableRoute, PaginatableType, RootState } from '@/store';
 import { Car } from '@/types/Car';
+import { AppThunk, PaginatableRoute, PaginatableType, RootState } from '@/store';
 import route from '@/libs/route';
-import Box from '@/components/base/Box';
+import { Box } from '@/components/base/Box';
 import { Link } from '@/components/base/Link';
 import { container } from './Pagination.module.css';
 
 type ChildrenProps = {
   renderPagination: () => React.ReactNode;
-  // @todo fix the type
+  // @todo Infer the type
   data: Car[];
   loading: boolean;
 };

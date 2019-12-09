@@ -1,11 +1,9 @@
 .tombstone {
-  display: inline-block;
-  height: 100%;
-  width: 100%;
   background: linear-gradient(-90deg, var(--neutral-1) 0%, #fff 50%, var(--neutral-1) 100%);
   background-size: 400% 400%;
   animation: pulse 1.2s ease-in-out infinite;
   border-radius: 2px;
+  overflow: hidden;
 }
 
 @keyframes pulse {
@@ -23,5 +21,6 @@
 }
 
 .line.block {
+  height: 100%;
   width: 100%;
 }

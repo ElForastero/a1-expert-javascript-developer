@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import expandStyles, { Styles } from './expandStyles';
 
 /* prettier-ignore */
+export
 type Props = {
   children?: React.ReactNode;
   as?: keyof JSX.IntrinsicElements;
@@ -34,14 +35,22 @@ type Props = {
   mx?: string | number;
   w?: string;
   h?: string;
+
+  dataTestId?: string;
 };
 
-const Box: React.FC<Props> = ({ as = 'div', children, className, ...props }) => {
+export const Box: React.FC<Props & React.HTMLProps<HTMLElement>> = ({
+  as = 'div',
+  children,
+  className,
+  dataTestId,
+  ...props
+}) => {
   const Tag = as;
   const styles = useMemo(() => expandStyles(props as Styles), [props]);
 
   return (
-    <Tag className={className} style={styles}>
+    <Tag className={className} style={styles} data-testid={dataTestId}>
       {children}
     </Tag>
   );
@@ -50,5 +59,3 @@ const Box: React.FC<Props> = ({ as = 'div', children, className, ...props }) => 
 Box.defaultProps = {
   display: 'block',
 };
-
-export default Box;

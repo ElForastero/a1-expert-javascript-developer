@@ -6,7 +6,7 @@ import { Spinner } from '@/components/base/Spinner';
 import Item from './Item';
 import s from './Select.module.css';
 
-type SelectItem = {
+export type SelectItem = {
   label: string;
   value: any;
 };
@@ -60,7 +60,13 @@ export const Select: React.FC<Props> = ({
   };
 
   return (
-    <div id={id} className={c(s.container, { [s.active]: active })} onClick={open} ref={ref}>
+    <div
+      id={id}
+      className={c(s.container, { [s.active]: active })}
+      onClick={open}
+      ref={ref}
+      role="listbox"
+    >
       <div className={s.selected}>
         {selected.label}
         {loading ? <Spinner size="sm" /> : <div className={s.triangle} />}
@@ -69,7 +75,7 @@ export const Select: React.FC<Props> = ({
         <div className={s.list}>
           {values.map(item => (
             <Item
-              key={item.value}
+              key={item.label}
               selected={item === selected}
               onClick={handleSelect.bind(null, item)}
             >

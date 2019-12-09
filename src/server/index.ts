@@ -3,6 +3,9 @@ import { getCars, getCar } from './controllers/cars';
 import { getColors } from './controllers/colors';
 import { getManufacturers } from './controllers/manufacturers';
 
+/**
+ * Emulate delays like in real-world app
+ */
 mock.setup();
 mock.get(/\/api\/cars\/[0-9]/, delay(getCar, 300));
 mock.get(/\/api\/cars/, delay(getCars, 350));

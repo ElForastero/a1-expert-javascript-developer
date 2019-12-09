@@ -4,6 +4,7 @@ import { ucFirst } from '@/libs/str';
 import useSearchParams from '@/hooks/useSearchParams';
 import { RootState } from '@/store';
 import { fetchColors } from '@/store/colors';
+import { SelectItem as ItemType } from '@/components/base/Select';
 import { LabeledSelect } from '@/components/composite/LabeledSelect';
 
 type Props = {
@@ -15,7 +16,7 @@ export const ColorsSelect: React.FC<Props> = ({ onChange }) => {
   const colors = useSelector((state: RootState) => state.colors.data);
   const { color } = useSearchParams();
 
-  const noneColor = { label: 'All car colors', value: undefined };
+  const noneColor: ItemType = { label: 'All car colors', value: undefined };
   const colorsValues = useMemo(
     () => [noneColor, ...colors.map(color => ({ label: ucFirst(color), value: color }))],
     [colors]

@@ -1,5 +1,5 @@
 .paragraph {
-    margin-top: 0;
-    margin-bottom: var(--space-3);
-    font-size: var(--fs-title);
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+  font-size: var(--fs-title);
 }

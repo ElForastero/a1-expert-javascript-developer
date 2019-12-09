@@ -1,4 +1,6 @@
 .header {
   height: 80px;
   border-bottom: solid 2px var(--neutral-1);
+  background-color: #fff;
+  z-index: var(--layer-2);
 }

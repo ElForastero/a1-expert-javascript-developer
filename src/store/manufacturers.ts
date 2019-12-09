@@ -9,9 +9,9 @@ type State = {
   loading: boolean;
 };
 
-const slice = createSlice<State, any>({
+const slice = createSlice({
   name: 'manufacturers',
-  initialState: { data: [], error: null, loading: false },
+  initialState: { data: [], error: null, loading: false } as State,
   reducers: {
     updateData(state: State, action: PayloadAction<Manufacturer[]>) {
       state.data = action.payload;
@@ -30,20 +30,15 @@ export const { updateData, updateLoading, updateError } = actions;
 export default reducer;
 
 export const fetchManufacturers = (): AppThunk => async dispatch => {
-  // @ts-ignore
   dispatch(updateLoading(true));
-  // @ts-ignore
   dispatch(updateError(null));
 
   try {
     const result = await axios.get('/api/manufacturers');
-    // @ts-ignore
     dispatch(updateData(result.data.manufacturers));
   } catch (error) {
-    // @ts-ignore
     dispatch(updateError(error.message));
   } finally {
-    // @ts-ignore
     dispatch(updateLoading(false));
   }
 };

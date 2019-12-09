@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { CaseReducer, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Car } from '@/types/Car';
 import { AppThunk } from '@/store/index';
 
@@ -11,9 +11,15 @@ type State = {
   error: string | null;
 };
 
-const slice = createSlice<State, any>({
+const slice = createSlice({
   name: 'cars',
-  initialState: { data: [], pagesCount: null, totalCount: null, loading: true, error: null },
+  initialState: {
+    data: [],
+    pagesCount: null,
+    totalCount: null,
+    loading: true,
+    error: null,
+  } as State,
   reducers: {
     updateData(state: State, action: PayloadAction<State>) {
       state.data = action.payload.data;
@@ -41,20 +47,15 @@ export type FetchCarsParams = {
 };
 
 export const fetchCars = (params: FetchCarsParams): AppThunk => async dispatch => {
-  // @ts-ignore
   dispatch(updateLoading(true));
-  // @ts-ignore
   dispatch(updateError(null));
 
   try {
     const result = await axios.get('/api/cars', { params });
-    // @ts-ignore
     dispatch(updateData(result.data));
   } catch (error) {
-    // @ts-ignore
     dispatch(updateError(error.message));
   } finally {
-    // @ts-ignore
     dispatch(updateLoading(false));
   }
 };

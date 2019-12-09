@@ -22,4 +22,5 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: var(--fs-body);
   color: var(--neutral-2);
+  line-height: 1;
 }

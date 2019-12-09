@@ -1,4 +1,2 @@
-import Link from './Link';
-import NavLink from './NavLink';
-
-export { Link, NavLink };
+export * from './Link';
+export * from './NavLink';

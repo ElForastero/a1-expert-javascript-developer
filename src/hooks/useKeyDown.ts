@@ -1,5 +1,8 @@
 import { useEffect } from 'react';
 
+/**
+ * Executes a callback onKeyDown.
+ */
 export default (key: string, callback: (event: KeyboardEvent) => void) => {
   useEffect(() => {
     const listener = (event: KeyboardEvent) => {

@@ -6,12 +6,16 @@ type Props = {
   withTopPadding?: boolean;
 };
 
-const Content: React.FC<Props> = ({ children, withTopPadding: p }) => (
-  <div className={c(content, { [withTopPadding]: p })}>{children}</div>
+export const Content: React.FC<Props & React.HTMLProps<HTMLDivElement>> = ({
+  children,
+  withTopPadding: p,
+  ...props
+}) => (
+  <div className={c(content, { [withTopPadding]: p })} {...props}>
+    {children}
+  </div>
 );
 
 Content.defaultProps = {
   withTopPadding: false,
 };
-
-export default Content;

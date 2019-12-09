@@ -1,7 +1,7 @@
 import { useRef, useEffect, MutableRefObject } from 'react';
 
 /**
- * Invokes a callback when click is happened outside of component.
+ * Invokes a callback when click is happened outside of a component.
  */
 export default (ref: MutableRefObject<HTMLElement>, callback: (event: MouseEvent) => void) => {
   const callbackRef = useRef(callback);

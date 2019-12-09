@@ -1,11 +1,14 @@
 import React from 'react';
-import { Content, Layout } from '@/components/base/Layout';
-import Header from '@/components/composite/Header';
-import Footer from '@/components/composite/Footer';
+import { Layout } from '@/components/base/Layout';
+import { Header } from '@/components/composite/Header';
+import { Footer } from '@/components/composite/Footer';
+import { Sticky } from '@/components/base/Sticky';
 
 const Common: React.FC = ({ children }) => (
   <Layout>
-    <Header />
+    <Sticky top="0px" data-testid="sticky-header">
+      <Header />
+    </Sticky>
     {children}
     <Footer />
   </Layout>
